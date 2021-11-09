@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hw_product_recycleview.InfoOfProductFragment
 import com.example.hw_product_recycleview.model.product // need to import af class
 import com.example.hw_product_recycleview.R
 
@@ -63,7 +64,7 @@ class ItemAdapter (private val context:Context,
         holder.buttoninfoProduct.setOnClickListener {
             if (item.quantityNumberResourceId > 0) {
                 // initializes intent for going to (InfoOfProduct)
-                val intent = Intent(context, InfoOfProduct::class.java )
+                val intent = Intent(context, InfoOfProductFragment::class.java )
                 // send value for Activity InfoOfProduct
                 intent.putExtra("phone_Image", item.ImgResourceId )
                 intent.putExtra("nameOfProduct", item.NameResourceId )

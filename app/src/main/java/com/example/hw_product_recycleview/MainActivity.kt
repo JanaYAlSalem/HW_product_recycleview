@@ -3,13 +3,16 @@ package com.example.hw_product_recycleview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw_product_recycleview.adapter.ItemAdapter
 import com.example.hw_product_recycleview.data.Datasource
 import com.example.hw_product_recycleview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var navController: NavController
     lateinit var binding: ActivityMainBinding // to initializes binding in future time
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
