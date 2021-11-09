@@ -10,25 +10,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hw_product_recycleview.InfoOfProductFragment
+import com.example.hw_product_recycleview.MainActivity
+import com.example.hw_product_recycleview.ProductListFragmentDirections
 import com.example.hw_product_recycleview.model.product // need to import af class
 import com.example.hw_product_recycleview.R
 
-class ItemAdapter (private val context:Context,
-                   private val dataset: List<product>): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>()
-{
-    class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = itemView.findViewById(R.id.phone_Image) // place of image Phone on list item
-        val textViewName: TextView = itemView.findViewById(R.id.nameOfProduct) // place of name on list item
-        val textViewPrice: TextView = itemView.findViewById(R.id.priceOfProduct) // // place of price on list item
-        val favoriteIcon: ImageView = itemView.findViewById(R.id.favoriteIcon) // place of favorite Icon on list item
-        val buttoninfoProduct: Button = itemView.findViewById(R.id.buyButton) // place of button on list item
+class ItemAdapter (private val dataset: List<product>): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+
+    // sup class of ItemAdapter
+    class ItemViewHolder(  view: View) : RecyclerView.ViewHolder(view) {
+        val imageView: ImageView = view.findViewById(R.id.phone_Image) // place of image Phone on list item
+        val textViewName: TextView = view.findViewById(R.id.nameOfProduct) // place of name on list item
+        val textViewPrice: TextView = view.findViewById(R.id.priceOfProduct) // // place of price on list item
+        val favoriteIcon: ImageView = view.findViewById(R.id.favoriteIcon) // place of favorite Icon on list item
+        val buttoninfoProduct: Button = view.findViewById(R.id.buyButton) // place of button on list item
     } // end ItemViewHolder :in line on ItemAdapter class
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ItemViewHolder {
-        // create a new view:ItemViewHolder and return it on ****
-        // view called a adapterLayout which is get from parent to list_item layout
         val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return ItemViewHolder(adapterLayout)
     }
@@ -36,7 +37,11 @@ class ItemAdapter (private val context:Context,
     override fun onBindViewHolder(holder: ItemAdapter.ItemViewHolder, position: Int) {
         // item is a af(the type of list) datatype
         // the holder is will be show on the screen
+
         val item = dataset[position]
+        //Toast.makeText(context, "${dataset.size}", Toast.LENGTH_SHORT).show()
+
+
         // (ImgResourceId,NameResourceId,PriceResourceId,isVipResourceId,quantityNumberResourceId)
 
         // imageView -> initializes on ItemViewHolder class, ImgResourceId is a constructor on af class
@@ -60,20 +65,24 @@ class ItemAdapter (private val context:Context,
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra("letter", holder.button.text.toString())
         context.startActivity(intent)
-        */
+         * Switch to
+        val action = ProductListFragmentDirections.actionProductListFragmentToInfoOfProductFragment2(
+        phoneImage = item.ImgResourceId,
+        nameOfProduct = item.NameResourceId)
+        holder.itemView.findNavController().navigate(action)
+         */
+
         holder.buttoninfoProduct.setOnClickListener {
             if (item.quantityNumberResourceId > 0) {
-                // initializes intent for going to (InfoOfProduct)
-                val intent = Intent(context, InfoOfProductFragment::class.java )
-                // send value for Activity InfoOfProduct
-                intent.putExtra("phone_Image", item.ImgResourceId )
-                intent.putExtra("nameOfProduct", item.NameResourceId )
-                it?.context?.startActivity(intent)
-            } else { Toast.makeText(context, "Sorry, the product is not available right now", Toast.LENGTH_LONG).show() }
+            val action = ProductListFragmentDirections.actionProductListFragmentToInfoOfProductFragment2(
+                phoneImage = item.ImgResourceId,
+                nameOfProduct = item.NameResourceId)
+
+                holder.itemView.findNavController().navigate(action)
+            } else {
+                 Toast.makeText(holder.itemView.context, "Sorry, the product is not available right now", Toast.LENGTH_LONG).show() }
 
         }
-
-
 
     }
 

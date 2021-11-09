@@ -3,21 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/infoOfProductFragment">
-    <fragment
-        android:id="@+id/infoOfProductFragment"
-        android:name="com.example.hw_product_recycleview.InfoOfProductFragment"
-        android:label="InfoOfProductFragment" >
-        <argument
-            android:name="nameOfProduct"
-            app:argType="string" />
-    </fragment>
+    app:startDestination="@id/productListFragment">
     <fragment
         android:id="@+id/productListFragment"
         android:name="com.example.hw_product_recycleview.ProductListFragment"
-        android:label="ProductListFragment" >
+        android:label="fragment_product_list"
+        tools:layout="@layout/fragment_product_list" >
         <action
-            android:id="@+id/action_productListFragment_to_infoOfProductFragment"
-            app:destination="@id/infoOfProductFragment" />
+            android:id="@+id/action_productListFragment_to_infoOfProductFragment2"
+            app:destination="@id/infoOfProductFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoOfProductFragment2"
+        android:name="com.example.hw_product_recycleview.InfoOfProductFragment"
+        android:label="fragment_info_of_product"
+        tools:layout="@layout/fragment_info_of_product" >
+        <argument
+            android:name="phoneImage"
+            app:argType="integer" />
+        <argument
+            android:name="nameOfProduct"
+            app:argType="string" />
     </fragment>
 </navigation>

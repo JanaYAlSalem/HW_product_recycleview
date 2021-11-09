@@ -2,44 +2,45 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:app = "http://schemas.android.com/apk/res-auto"
     xmlns:android= "http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:layout_height="200dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/phone_Image"
             android:layout_width="120dp"
             android:layout_height="match_parent"
+            android:importantForAccessibility="no"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/iphone"
-            android:importantForAccessibility="no" />
+            app:srcCompat="@drawable/iphone" />
 
         <TextView
             android:id="@+id/nameOfProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toEndOf="@id/phone_Image"
-            android:layout_marginStart="16dp"
+            android:layout_width="128dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="56dp"
             android:text=""
             android:textColor="@color/black"
             android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/phone_Image"
+            app:layout_constraintTop_toTopOf="parent"
 
             />
 
         <TextView
             android:id="@+id/priceOfProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="82dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="28dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/phone_Image"
@@ -47,14 +48,16 @@
 
         <ImageView
             android:id="@+id/favoriteIcon"
-            android:scaleType="centerCrop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="47dp"
+            android:layout_height="40dp"
             android:layout_margin="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/todo"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_star_24"
-            android:contentDescription="@string/todo" />
+            app:srcCompat="@drawable/ic_baseline_star_24" />
 
         <Button
             android:id="@+id/buyButton"

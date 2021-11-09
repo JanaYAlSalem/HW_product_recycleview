@@ -5,6 +5,7 @@ import android.view.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.hw_product_recycleview.adapter.ItemAdapter
 import com.example.hw_product_recycleview.data.Datasource
@@ -29,12 +30,18 @@ class ProductListFragment : Fragment() {
         _binding = FragmentProductListBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+
     // the third and it's last one is onViewCreated()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // send the Adapter parameter like main activity
-        binding.recyclerView.adapter = ItemAdapter(this.requireContext(), Datasource().loadProduct())
+        //Toast.makeText(context, "${Datasource().loadProduct().size}", Toast.LENGTH_SHORT).show()
+        var att=ItemAdapter( Datasource().loadProduct())
+        binding.recyclerView.adapter = att
         binding.recyclerView.setHasFixedSize(true)
     }
+
+
 
     /**
      * Frees the binding object when the Fragment is destroyed.

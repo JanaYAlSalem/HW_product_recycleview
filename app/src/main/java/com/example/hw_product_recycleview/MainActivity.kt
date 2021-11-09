@@ -14,9 +14,10 @@ import com.example.hw_product_recycleview.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     lateinit var binding: ActivityMainBinding // to initializes binding in future time
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)  // initializes the binding object
         setContentView(binding.root) // get root of binding
