@@ -11,8 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hw_product_recycleview.InfoOfProduct
-import com.example.hw_product_recycleview.MainActivity
 import com.example.hw_product_recycleview.model.product // need to import af class
 import com.example.hw_product_recycleview.R
 
